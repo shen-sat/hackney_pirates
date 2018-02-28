@@ -15,13 +15,14 @@ client = Twitter::REST::Client.new do |config|
 end
 
 #collect followers
-followers = client.followers("HackneyPirates").take(10)
+followers = client.followers("HackneyPirates").take(1)
 
-#for each follwer, list the name and bio
+#for each follower, list the name and bio
 n = 0
 followers.each do |follower|
 	sheet1[n,0] = "#{follower.name}"
 	sheet1[n,1] = "#{follower.description}"
+	sheet1[n,2] = "#{follower.followers_count}"
 	n += 1
 end
 
